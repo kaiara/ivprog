@@ -56,7 +56,7 @@ export class AppComponent {
     this.components.push(component);
 
     setTimeout(() => {
-      document.getElementById("variable-type-" + (this.getVariables().length - 1))?.focus();
+      document.getElementById("select-var-" + (this.getVariables().length - 1))?.focus();
     }, 200);
   }
 
@@ -76,7 +76,7 @@ export class AppComponent {
 
   addOperator() {
     const operator = {
-      type: '',
+      name: '',
       value: ''
     };
 
@@ -86,6 +86,10 @@ export class AppComponent {
     }
 
     this.components.push(component);
+
+    setTimeout(() => {
+      document.getElementById("select-variable-" + (this.getVariables().length - 1))?.focus();
+    }, 200);
   }
 
   removeComponent(index: number) {

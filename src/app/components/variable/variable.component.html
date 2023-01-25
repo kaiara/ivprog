@@ -1,4 +1,4 @@
-<div class="mb-2 d-flex col-12 align-items-center px-4 px-1 back" [id]="'variable-' + index">
+<div class="mb-2 d-flex col-12 align-items-center px-2 back" [id]="'variable-' + index">
     <div *ngIf="!isHidden" class="col-lg-10 d-flex justify-content-start">
         <p class="mb-0" [id]="'variable-cod-' + index" tabindex="0">
             <span *ngIf="variable.type == 'INTEGER'">inteiro </span>
@@ -30,7 +30,8 @@
             <label for="receive" tabindex="0" title="Recebe">recebe</label>
         </div>
 
-        <div class="col-xl-3 col-lg-3 col-xs-12 col-md-3" *ngIf="variable.type == 'INTEGER' || variable.type == 'DOUBLE'">
+        <div class="col-xl-3 col-lg-3 col-xs-12 col-md-3"
+            *ngIf="variable.type == 'INTEGER' || variable.type == 'DOUBLE'">
             <input type="number" class="form-control" id="value" title="Valor da variável" [(ngModel)]="variable.value">
         </div>
 
@@ -47,17 +48,14 @@
     </div>
 
     <div class="col-lg-2">
-        <div class="row justify-content-end">
-            <div class="col-xl-2 d-flex justify-content-center col-lg-3 col-md-4">
-                <button class="btn btn-transparent" (click)="toggleHidden()">
-                    <span *ngIf="isHidden" class="bi bi-eye-fill" title="Visualizar código"></span>
-                    <span *ngIf="!isHidden" class="bi bi-eye-slash-fill" title="Esconder código"></span>
-                </button>
-            </div>
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-transparent" (click)="toggleHidden()">
+                <span *ngIf="isHidden" class="bi bi-eye-fill" title="Visualizar código"></span>
+                <span *ngIf="!isHidden" class="bi bi-eye-slash-fill" title="Esconder código"></span>
+            </button>
 
-            <div class="col-xl-2 col-lg-3 col-md-4">
-                <button class="btn btn-transparent text-danger pr-2" (click)="removeVariable()" title="Excluir variável"><span aria-hidden="true">X</span></button>
-            </div>
+            <button class="btn btn-transparent text-danger pr-2" (click)="removeVariable()"
+                title="Excluir variável"><span aria-hidden="true">X</span></button>
         </div>
     </div>
 </div>
