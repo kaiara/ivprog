@@ -1,0 +1,13 @@
+input{
+    width: 47px;
+}
+
+select{
+    max-width: 15rem;
+    min-width: 3rem;
+}
+
+.operator{
+    display: flex;
+    flex-direction: row;
+}

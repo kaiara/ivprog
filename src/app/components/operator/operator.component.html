@@ -1,0 +1,80 @@
+<div class="mb-2  col-lg-12 px-1 back">
+    <div class="row g-4">
+        <div *ngIf="!isHidden" class="col-lg-10 d-flex justify-content-start">
+            <p class="mb-0" [id]="'operator-cod-'+ index" tabindex="0">
+                <span>{{operator.name}}</span>
+                &lsaquo;-
+                <span>{{operator.value}};</span>
+            </p>
+        </div>
+
+        <div *ngIf="isHidden" class="col-lg-10">
+            <div class="col-lg-2">
+                <select [(ngModel)]="operator.name" class="ml-2 col" (change)="changeVariable()">
+                    <option *ngIf="variables.length" disabled [ngValue]="''">Selecione a variável</option>
+                    <option *ngFor="let v of variables" [ngValue]="v.value.name">{{v.value.name}}</option>
+                    <option *ngIf="!variables.length" disabled [ngValue]="''">Ainda não existem variáveis criadas!
+                    </option>
+                </select>
+            </div>
+
+
+
+            <div *ngFor="let op of operators" class="col-lg-10">
+                <div class="col">
+                    <select id="operator-op-{{op.index}}" *ngIf="op.type == ''" [(ngModel)]="op.type"
+                        (change)="changeType(op.index)">
+                        <option [ngValue]="''">Selecione</option>
+                        <option [ngValue]="'VARIABLE'">Variável</option>
+                        <option [ngValue]="'VALUE'">Valor</option>
+                    </select>
+
+                </div>
+                <div class="col">
+                    <select id="operator-op-{{op.index}}" *ngIf="op.type == 'VARIABLE'" [(ngModel)]="op.value"
+                        class="ml-2" (change)="changeValue(op.value)">
+                        <option *ngIf="variables.length" disabled [ngValue]="''">Selecione a variável</option>
+                        <option *ngFor="let v of variables" [ngValue]="v.value.name">{{v.value.name}}</option>
+                        <option *ngIf="!variables.length" disabled [ngValue]="''">Ainda não existem variáveis criadas!
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col">
+                    <input id="operator-op-{{op.index}}" *ngIf="op.type == 'VALUE'" [(ngModel)]="op.value"
+                        (change)="changeValue(op.value)" type="text" placeholder="Digite o valor a ser atribuido" />
+                </div>
+
+                <div class="col">
+                    <select id="operator-op-{{op.index}}" *ngIf="op.type == 'OPERATOR'" [(ngModel)]="op.value"
+                        (change)="changeValue(op.value)">
+                        <option [ngValue]="''">Selecione a operação</option>
+                        <option [ngValue]="'+'">+</option>
+                        <option [ngValue]="'-'">-</option>
+                    </select>
+                </div>
+
+
+            </div>
+
+            <button *ngIf="operators.length" type="button" (click)="addOperator()">Add</button>
+
+
+        </div>
+        <div class="col-lg-2">
+            <button class="btn btn-transparent" (click)="toggleHidden()">
+                <span *ngIf="isHidden" class="bi bi-eye-fill" title="Visualizar código"></span>
+                <span *ngIf="!isHidden" class="bi bi-eye-slash-fill" title="Esconder código"></span>
+            </button>
+            <button class="btn btn-transparent text-danger pr-2" (click)="removeOperator()"
+                title="Excluir variável"><span aria-hidden="true">X</span></button>
+        </div>
+    </div>
+
+
+    <!-- <div class="operator mb-3 text-center">
+        <div class="col-lg-10">.col-md-8</div>
+        <div class="col-lg-2">.col-6 .col-md-4</div>
+      </div> -->
+
+</div>
