@@ -56,8 +56,8 @@ export class AppComponent {
     this.components.push(component);
 
     setTimeout(() => {
-      document.getElementById("select-var-" + (this.getVariables().length - 1))?.focus();
-    }, 200);
+      document.getElementById("variable-type-" + (this.getVariables().length - 1))?.focus();
+    }, 100);
   }
 
   addWriter() {
@@ -88,8 +88,8 @@ export class AppComponent {
     this.components.push(component);
 
     setTimeout(() => {
-      document.getElementById("select-variable-" + (this.getVariables().length - 1))?.focus();
-    }, 200);
+      document.getElementById("select-var-" + (this.getOperators().length - 1))?.focus();
+    }, 100);
   }
 
   removeComponent(index: number) {
